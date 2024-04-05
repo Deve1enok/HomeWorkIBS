@@ -12,18 +12,20 @@ public class BaseTest {
 
 
     @BeforeAll
-    static void beforeAll () {
+    static void beforeAll() {
         System.setProperty("webdriver.chromedriver.driver", "src/test/resources/apps/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(5,TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         driver.get("http://localhost:8080/");
 
     }
+
     @AfterAll
     static void afterAll() {
         driver.close();
         driver.quit();
-    }}
+    }
+}
 

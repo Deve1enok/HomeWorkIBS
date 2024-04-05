@@ -5,6 +5,8 @@ import org.ibs.fazlyakhmetov.data.DataProductName;
 import org.ibs.fazlyakhmetov.pages.QualitMainPage;
 import org.ibs.fazlyakhmetov.pages.QualitProductPage;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -15,7 +17,6 @@ public class QualitAddFruitProductTest extends BaseTest {
     QualitProductPage qualitProductPage = new QualitProductPage(driver);
     DataProductName dataProductName = new DataProductName();
     DataFakeAssertResults dataFakeAssertResults = new DataFakeAssertResults();
-
 
     @Test
     @DisplayName("Добавление в список товаров \"фрукта\" с типом \"фрукт\" и чек-боксом \"экзотический\"")
@@ -45,7 +46,6 @@ public class QualitAddFruitProductTest extends BaseTest {
         Assertions.assertEquals(4, QualitProductPage.checkQuantityProducts(),
                 "Количество строк в таблице не равно 4");
     }
-
     @Test
     @DisplayName("Добавление в список товаров \"фрукта\" с типом \"фрукт\", без чек-бокса \"экзотический\"")
     @Tag("positive")
@@ -72,6 +72,23 @@ public class QualitAddFruitProductTest extends BaseTest {
                 "Количество строк в таблице не равно 4");
 
     }
+    @ValueSource(strings = {
+            "Дыня",
+            "Банан",
+            "Вишня"
+    })
+    @ParameterizedTest(name = "Добавления фркута {0} с типом фрукт")
+    @Tag("parameterized")
+    void atest(String testData) {
+
+        qualitMainPage.sandboxDropDownClick()
+                .menuProductClick();
+        qualitProductPage.openMenuAddProducts()
+                .setProductName(testData)
+                .selectProductTypeFruit()
+
+                .clickSaveResults();
+    }
 
     @Test
     @DisplayName("Пример теста без PageObject")
@@ -97,4 +114,5 @@ public class QualitAddFruitProductTest extends BaseTest {
         Assertions.assertEquals("5 Яблоко Фрукт true", driver.findElement(By.xpath(
                 "//tbody/tr[5]")).getText());
     }
+
 }
