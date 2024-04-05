@@ -1,6 +1,5 @@
 package org.ibs.fazlyakhmetov.tests;
 
-import org.ibs.fazlyakhmetov.tests.pages.QualitMainPage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
@@ -17,11 +16,11 @@ public class BaseTest {
         System.setProperty("webdriver.chromedriver.driver", "src/test/resources/apps/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(10,TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(5,TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         driver.get("http://localhost:8080/");
-    }
 
+    }
     @AfterAll
     static void afterAll() {
         driver.close();
