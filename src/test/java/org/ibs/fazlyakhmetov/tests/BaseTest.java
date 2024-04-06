@@ -9,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-
 public class BaseTest {
     public static WebDriver driver;
     public static QualitConfig configOwner = ConfigFactory.create(QualitConfig.class);
@@ -19,7 +18,7 @@ public class BaseTest {
         System.setProperty("webdriver.chromedriver.driver", configOwner.chromeDriver());
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(52, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         driver.get(configOwner.baseUrl());
 
