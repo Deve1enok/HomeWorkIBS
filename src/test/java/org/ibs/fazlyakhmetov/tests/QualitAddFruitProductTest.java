@@ -46,6 +46,7 @@ public class QualitAddFruitProductTest extends BaseTest {
         Assertions.assertEquals(4, QualitProductPage.checkQuantityProducts(),
                 "Количество строк в таблице не равно 4");
     }
+
     @Test
     @DisplayName("Добавление в список товаров \"фрукта\" с типом \"фрукт\", без чек-бокса \"экзотический\"")
     @Tag("positive")
@@ -72,6 +73,7 @@ public class QualitAddFruitProductTest extends BaseTest {
                 "Количество строк в таблице не равно 4");
 
     }
+
     @ValueSource(strings = {
             "Дыня",
             "Банан",
@@ -79,7 +81,7 @@ public class QualitAddFruitProductTest extends BaseTest {
     })
     @ParameterizedTest(name = "Добавления фркута {0} с типом фрукт")
     @Tag("parameterized")
-    void atest(String testData) {
+    void parameterizedFruitNotExoticTest(String testData) {
 
         qualitMainPage.sandboxDropDownClick()
                 .menuProductClick();
