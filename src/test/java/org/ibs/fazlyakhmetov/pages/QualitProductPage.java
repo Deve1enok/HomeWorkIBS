@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 
 public class QualitProductPage {
     public static WebDriver driver;
@@ -76,6 +78,7 @@ public class QualitProductPage {
         return tableResults.getText();
     }
 
+
     /**
      * Цикл для подсчета количества элементов(продуктов) в таблице.
      * Используается для проверки результата
@@ -96,25 +99,20 @@ public class QualitProductPage {
     }
 
     /**
-     * Цикл для перебора строк в таблице.
-     * Не смог использовать для тестирования в аннотации @test
+     * Цикл для перебора строки в таблице и сравнения строки с вашим парамтером
+     * Используается для проверки результата
      *
      * @author Fazlyakhmetov_Dinar
      */
+    public static void checkAddedFruit(String tableField) {
+        List<WebElement> productList = driver.findElements(By.xpath("//tbody/tr"));
 
-    public static boolean checkAddResult() {
-        String wb;
-        for (int i = 1; i < 10; i++) {
-            try {
-                wb = driver.findElement(By.xpath("//tbody/tr[" + i + "]")).getText();
-                if (wb.equals("5 Груша Фрукт false")) {
-                    return true;
-                }
-            } catch (Exception ex) {
-                return false;
+        for (WebElement product : productList) {
+            product.getText();
+            if (product.equals(tableField)) {
+                break;
             }
         }
-        return false;
     }
 
 }

@@ -116,5 +116,4 @@ public class QualitAddFruitProductTest extends BaseTest {
         Assertions.assertEquals("5 Яблоко Фрукт true", driver.findElement(By.xpath(
                 "//tbody/tr[5]")).getText());
     }
-
 }
