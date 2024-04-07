@@ -1,7 +1,7 @@
 package org.ibs.fazlyakhmetov.data;
 
 /**
- * Тестовые данные
+ * Тестовые данные для поля "Наименование" продукта
  *
  * @author Fazlyakhmetov_Dinar
  */
