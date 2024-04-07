@@ -31,18 +31,13 @@ public class QualitAddFruitProductTest extends BaseTest {
                 .selectExoticCheckboxTrue()
                 .clickSaveResults();
 
-        Assertions.assertEquals(
-                dataFakeAssertResults.dataForCheckExoticFruit, qualitProductPage.checkResultAddProduct(),
-                "Строки не совпадают по значению");
+        QualitProductPage.checkAddedFruit(dataFakeAssertResults.exoticFruitResult);
         Assertions.assertEquals(5, QualitProductPage.checkQuantityProducts(),
                 "Количество строк в таблице не равно 5");
 
         qualitMainPage.sandboxDropDownClick()
                 .resetResults();
-
-        Assertions.assertNotEquals(
-                dataFakeAssertResults.dataForCheckExoticFruit, qualitProductPage.checkResultAfterReset(),
-                "Строки не совпадают по значению");
+        QualitProductPage.checkAddedFruit(dataFakeAssertResults.defaultFruitNum4);
         Assertions.assertEquals(4, QualitProductPage.checkQuantityProducts(),
                 "Количество строк в таблице не равно 4");
     }
@@ -59,16 +54,14 @@ public class QualitAddFruitProductTest extends BaseTest {
                 .selectProductTypeFruit()
                 .clickSaveResults();
 
-        Assertions.assertEquals(dataFakeAssertResults.dataForCheckFruit, qualitProductPage.checkResultAddProduct(),
-                "Строки не совпадают по значению");
+        QualitProductPage.checkAddedFruit(dataFakeAssertResults.notExoticFruitResult);
         Assertions.assertEquals(5, QualitProductPage.checkQuantityProducts(),
                 "Количество строк в таблице не равно 5");
 
         qualitMainPage.sandboxDropDownClick()
                 .resetResults();
 
-        Assertions.assertNotEquals(dataFakeAssertResults.dataForCheckFruit, qualitProductPage.checkResultAfterReset(),
-                "Строки не совпадают по значению");
+        QualitProductPage.checkAddedFruit(dataFakeAssertResults.defaultFruitNum4);
         Assertions.assertEquals(4, QualitProductPage.checkQuantityProducts(),
                 "Количество строк в таблице не равно 4");
 
@@ -90,6 +83,7 @@ public class QualitAddFruitProductTest extends BaseTest {
                 .selectProductTypeFruit()
 
                 .clickSaveResults();
+
     }
 
     @Test
@@ -116,4 +110,5 @@ public class QualitAddFruitProductTest extends BaseTest {
         Assertions.assertEquals("5 Яблоко Фрукт true", driver.findElement(By.xpath(
                 "//tbody/tr[5]")).getText());
     }
+
 }
