@@ -19,6 +19,8 @@
         <slf4j.version>2.0.12</slf4j.version>
         <surefire.version>3.2.5</surefire.version>
         <owner.version>1.0.10</owner.version>
+        <slf4jreload.version>2.0.12</slf4jreload.version>
+        <lombock.version>1.18.32</lombock.version>
     </properties>
 
     <dependencies>
@@ -45,7 +47,13 @@
             <version>${junitparams.version}</version>
             <scope>test</scope>
         </dependency>
-
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-reload4j -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-reload4j</artifactId>
+            <version>${slf4jreload.version}</version>
+            <scope>test</scope>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -58,14 +66,18 @@
             <artifactId>owner</artifactId>
             <version>${owner.version}</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.20.0</version>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombock.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
