@@ -1,15 +1,18 @@
 package org.ibs.fazlyakhmetov.pages;
 
+import lombok.extern.slf4j.Slf4j;
 import org.ibs.fazlyakhmetov.tests.BaseTest;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
-
+@Slf4j
 public class QualitProductPage {
     public static WebDriver driver;
 
@@ -34,8 +37,6 @@ public class QualitProductPage {
     private WebElement saveButton;
     @FindBy(xpath = "//tbody/tr")
     private WebElement defaultTable;
-    @FindBy(xpath = "//tbody/tr[5]")
-    private WebElement tableResults;
     @FindBy(xpath = "//div/a[@id='reset']")
     private WebElement resetData;
 
@@ -70,15 +71,6 @@ public class QualitProductPage {
         return this;
     }
 
-    public String checkResultAfterReset() {
-        return defaultTable.getText();
-    }
-
-    public String checkResultAddProduct() {
-        return tableResults.getText();
-    }
-
-
     /**
      * Цикл для подсчета количества элементов(продуктов) в таблице.
      * Используается для проверки результата
@@ -92,7 +84,7 @@ public class QualitProductPage {
                 WebElement wb = driver.findElement(By.xpath("//tbody/tr[" + i + "]"));
                 count++;
             } catch (Exception ex) {
-                return count;
+                log.debug("Ошибка");
             }
         }
         return count;
@@ -105,14 +97,14 @@ public class QualitProductPage {
      * @author Fazlyakhmetov_Dinar
      */
     public static void checkAddedFruit(String tableField) {
-        List<WebElement> productList = driver.findElements(By.xpath("//tbody/tr"));
-
-        for (WebElement product : productList) {
-            product.getText();
-            if (product.equals(tableField)) {
-                break;
-            }
+        List<WebElement> productWebList = driver.findElements(By.xpath("//tbody/tr"));
+        ArrayList<String> productTextList = new ArrayList<>();
+        for (WebElement product : productWebList) {
+            productTextList.add(product.getText());
         }
+        if (productTextList.contains(tableField)) {
+            log.info("Добавленный продукт совпадает");
+        } else Assertions.fail("Добавленный продукт не совпадает");
     }
 
 }
