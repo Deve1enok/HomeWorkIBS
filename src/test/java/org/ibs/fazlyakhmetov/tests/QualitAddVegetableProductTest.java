@@ -29,16 +29,14 @@ public class QualitAddVegetableProductTest extends BaseTest {
                 .selectProductTypeVegetable()
                 .clickSaveResults();
 
-        Assertions.assertEquals(dataFakeAssertResults.dataForCheckVeg, qualitProductPage.checkResultAddProduct(),
-                "Строки не совпадают по значению");
+        QualitProductPage.checkAddedFruit(dataFakeAssertResults.notExoticVegResult);
         Assertions.assertEquals(5, QualitProductPage.checkQuantityProducts(),
                 "Количество строк в таблице не равно 5");
 
         qualitMainPage.sandboxDropDownClick()
                 .resetResults();
 
-        Assertions.assertNotEquals(dataFakeAssertResults.dataForCheckVeg, qualitProductPage.checkResultAfterReset(),
-                "Строки не совпадают по значению");
+        QualitProductPage.checkAddedFruit(dataFakeAssertResults.defaultFruitNum4);
         Assertions.assertEquals(4, QualitProductPage.checkQuantityProducts(),
                 "Количество строк в таблице не равно 4");
     }
@@ -56,18 +54,14 @@ public class QualitAddVegetableProductTest extends BaseTest {
                 .selectExoticCheckboxTrue()
                 .clickSaveResults();
 
-        Assertions.assertEquals(
-                dataFakeAssertResults.dataForCheckExoticVeg, qualitProductPage.checkResultAddProduct(),
-                "Строки не совпадают по значению");
+        QualitProductPage.checkAddedFruit(dataFakeAssertResults.exoticVegResult);
         Assertions.assertEquals(5, QualitProductPage.checkQuantityProducts(),
                 "Количество строк в таблице не равно 4");
 
         qualitMainPage.sandboxDropDownClick()
                 .resetResults();
 
-        Assertions.assertNotEquals(
-                dataFakeAssertResults.dataForCheckExoticVeg, qualitProductPage.checkResultAfterReset(),
-                "Строки не совпадают по значению");
+        QualitProductPage.checkAddedFruit(dataFakeAssertResults.defaultFruitNum4);
         Assertions.assertEquals(4, QualitProductPage.checkQuantityProducts(),
                 "Количество строк в таблице не равно 4");
     }
