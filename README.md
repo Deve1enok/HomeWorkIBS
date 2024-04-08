@@ -6,7 +6,11 @@
 - JUnit5
 - Owner
 - Slf4j
-
+- 
+Примененные паттерны:
+- PageObject
+- Chain of invocation
+- Page factory
 
 
 
