@@ -37,6 +37,7 @@ public class QualitAddFruitProductTest extends BaseTest {
 
         qualitMainPage.sandboxDropDownClick()
                 .resetResults();
+
         QualitProductPage.checkAddedFruit(dataFakeAssertResults.defaultFruitNum4);
         Assertions.assertEquals(4, QualitProductPage.checkQuantityProducts(),
                 "Количество строк в таблице не равно 4");
@@ -83,7 +84,6 @@ public class QualitAddFruitProductTest extends BaseTest {
                 .selectProductTypeFruit()
 
                 .clickSaveResults();
-
     }
 
     @Test
